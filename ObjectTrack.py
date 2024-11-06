@@ -38,4 +38,4 @@ def stackImages(scale,imgArray):
     height = imgArray[0],[0].shape[0]
     if rowsAvalible:
         for x in range(0, rows):
-            for y in rang(0, cols):
+          break
