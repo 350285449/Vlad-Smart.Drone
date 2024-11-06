@@ -1,0 +1,16 @@
+Index: ObjectTrack.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import cv2\r\nimport numpy as np\r\n\r\nfrom TeloMain import height\r\n\r\nframeWidth = 640\r\nframeHeight = 480\r\ncap = cv2.VideoCapture(1)\r\ncap.set(3, frameWidth)\r\ncap.set(4, frameHeight)\r\n\r\ndeadZone = 100\r\n\r\nglobal imgContour\r\n\r\ndef empty(a):\r\n    pass\r\ncv2.namedWindow(\"HSV\")\r\ncv2.resizeWindow(\"HSV\", 640, 240)\r\ncv2.createTrackbar(\"HUE Min\",\"HSV\", 19, 179, empty)\r\ncv2.createTrackbar(\"HUE Max\",\"HSV\", 35, 179, empty)\r\ncv2.createTrackbar(\"SAT Min\",\"HSV\", 107, 255, empty)\r\ncv2.createTrackbar(\"SAT Max\",\"HSV\", 255, 255, empty)\r\ncv2.createTrackbar(\"Value Min\",\"HSV\", 89, 255, empty)\r\ncv2.createTrackbar(\"Value Max\",\"HSV\", 255, 255, empty)\r\n\r\ncv2.namedWindow(\"parametrs\")\r\ncv2.resizeWindow(\"parametrs\", 640, 240)\r\ncv2.createTrackbar(\"Threshold1\",\"Parameters\",166, 255,empty)\r\ncv2.createTrackbar(\"Threshold2\",\"Parameters\",171, 255,empty)\r\ncv2.createTrackbar(\"Area\",\"Parameters\",3759, 30000,empty)\r\n\r\ndef stackImages(scale,imgArray):\r\n    rows = len(imgArray)\r\n    cols = len(imgArray[0])\r\n    rowsAvalible = isinstance(imgArray[0], list)\r\n    width = imgArray[0],[0].shape[1]\r\n    height = imgArray[0],[0].shape[0]\r\n    if rowsAvalible:\r\n        for x in range(0, rows):\r\n            for y in rang(0, cols):\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ObjectTrack.py b/ObjectTrack.py
+--- a/ObjectTrack.py	(revision a26c55b2d0f4ad6881d05b6afcf3a1f98d356e7a)
++++ b/ObjectTrack.py	(date 1730862080906)
+@@ -38,4 +38,4 @@
+     height = imgArray[0],[0].shape[0]
+     if rowsAvalible:
+         for x in range(0, rows):
+-            for y in rang(0, cols):
++            break
