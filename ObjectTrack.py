@@ -50,3 +50,27 @@ def stackImages(scale,imgArray):
         for x in range(0, rows):
          hor[x] = np.hstack(imgArray[x])
         ver = np.vstack(hor)
+    for x in range(0, rows):
+        if imgArray[x].shape[:2] == imgArray[0].shape[:2]:
+            imgArray[x] = cv2.resize(imgArray[x], (0, 0), None, scale, scale)
+        else:
+            imgArray[x] = cv2.resize(imgArray[x], (imgArray[0].shape[1], imgArray[0].shape[0]), None, scale, scale)
+        if len(imgArray[x].shape) == 2:
+            imgArray[x] = cv2.cvtColor(imgArray[x], cv2.COLOR_GRAY2BGR)
+    hor = np.hstack(imgArray)
+    ver = hor
+    return ver
+
+    def getContours(img, imgContour):
+        contours, hierarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        for cnt in contours:
+            area = cv2.contourArea(cnt)
+            areaMin = cv2.getTrackbarPos("Area", "Parameters")
+            if area > areaMin:
+                cv2.drawContours(imgContour, cnt, -1, (255, 0, 255), 7)
+                peri = cv2.arcLength(cnt, True)
+                approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
+                print(len(approx))
+                x, y, w, h = cv2.boundingRect(approx)
+                cv2.rectangle(imgContour, (x, y), (x + w, y + h), (0, 255, 0), 5)
+            break
