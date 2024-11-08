@@ -35,6 +35,9 @@
     "accountId": "1c478eae-a120-4c38-ad3a-2a9ec4f32500"
   }
 }]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/ObjectTrack.py" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
